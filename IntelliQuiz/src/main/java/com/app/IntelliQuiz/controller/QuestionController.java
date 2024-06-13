@@ -1,13 +1,13 @@
 package com.app.IntelliQuiz.controller;
 
 
+import com.app.IntelliQuiz.dao.QuestionDao;
 import com.app.IntelliQuiz.entity.Question;
 import com.app.IntelliQuiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,16 +18,36 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
+    @Autowired
+    QuestionDao questionDao;
+
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestions(){
+    public List<Question> getAllQuestions() {
 
         return questionService.getAllQuestions();
     }
 
 
     @GetMapping("category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category){
+    public List<Question> getQuestionsByCategory(@PathVariable String category) {
         return questionService.getQuestionsByCategory(category);
 
+    }
+
+    //adding question
+
+    @PostMapping("add")
+    public String addQuestion(@RequestBody Question question) {
+        return questionService.addQuestion(question);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteQuestion(@PathVariable int id) {
+        boolean isDeleted = questionService.deleteQuestion(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Question deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Question not found");
+        }
     }
 }

@@ -22,4 +22,19 @@ public class QuestionService {
     public List<Question> getQuestionsByCategory(String category) {
         return questionDao.findByCategory(category);
     }
+
+    public String addQuestion(Question question) {
+        questionDao.save(question);
+        return "success";
+    }
+
+    public boolean deleteQuestion(int id) {
+        if (questionDao.existsById(id)) {
+            questionDao.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
