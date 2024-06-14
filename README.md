@@ -15,10 +15,10 @@ Postman
 
 
 ## Features
-Create and manage quizzes
-CRUD operations on questions and quizzes
-Fetch questions by category
-Submit quiz answers
+Create and manage quizzes </br>
+CRUD operations on questions and quizzes </br>
+Fetch questions by category </br>
+Submit quiz answers </br>
 
 
 ## Installation & Run
@@ -39,34 +39,34 @@ Question Management
 
 - Retrieve All Questions
 
-Endpoint: GET /question/allQuestions
+Endpoint: GET /question/allQuestions </br>
 Description: Fetches all the questions available in the database.
 
 - Retrieve Questions by Category
 
-Endpoint: GET /question/category/{category}
+Endpoint: GET /question/category/{category} </br>
 Description: Fetches questions based on a specific category.
 
 - Add a Question
 
-Endpoint: POST /question/add
+Endpoint: POST /question/add </br>
 Description: Allows adding a new question to the database.
 
 - Delete a Question
 
-Endpoint: DELETE /question/{id}
+Endpoint: DELETE /question/{id} </br>
 Description: Deletes a question based on its ID.
 
 Quiz Management
 
 - Create a Quiz
 
-Endpoint: POST /quiz/create
+Endpoint: POST /quiz/create </br>
 Description: Creates a new quiz based on the specified category, number of questions, and title.
 
 - Retrieve Quiz Questions
 
-Endpoint: GET /quiz/get/{id}
+Endpoint: GET /quiz/get/{id} </br>
 Description: Fetches the questions for a specific quiz based on its ID.
 
 - Submit a Quiz
