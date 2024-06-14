@@ -1,8 +1,10 @@
 package com.app.IntelliQuiz.service;
 
 
+import com.app.IntelliQuiz.controller.QuestionController;
 import com.app.IntelliQuiz.dao.QuestionDao;
 import com.app.IntelliQuiz.entity.Question;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class QuestionService {
@@ -18,9 +21,10 @@ public class QuestionService {
     QuestionDao questionDao;
 
 
+
+
     public ResponseEntity <List<Question>> getAllQuestions() {
         try {
-
 
             return new ResponseEntity<>(questionDao.findAll(), HttpStatus.OK);
         }
@@ -30,6 +34,7 @@ public class QuestionService {
         return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
 
+
     public ResponseEntity <List<Question>> getQuestionsByCategory(String category) {
         try {
 
@@ -38,6 +43,7 @@ public class QuestionService {
         }
         catch (Exception e){
             e.printStackTrace();
+
         }
         return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
